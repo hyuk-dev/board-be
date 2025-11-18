@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Comment } from '../comment/comment.entity';
+import { Post } from '../post/post.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -13,4 +15,10 @@ export class User {
 
   @Column({ unique: true })
   nickname: string;
+
+  @OneToMany(() => Post, post => post.user, { cascade: ['update', 'insert']})
+  posts: Post[];
+
+  @OneToMany(() => Comment, comment => comment.user, { cascade: ['update', 'insert']})
+  comments: Comment[];
 }
