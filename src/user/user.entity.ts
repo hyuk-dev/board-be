@@ -15,6 +15,10 @@ export class User {
   @Exclude()
   password: string;
 
+  @Column()
+  @Exclude()
+  refreshToken: string;
+
   @Column({ unique: true })
   nickname: string;
 
