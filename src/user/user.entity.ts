@@ -6,7 +6,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column({ unique: true })
   email: string;
@@ -15,7 +15,7 @@ export class User {
   @Exclude()
   password: string;
 
-  @Column()
+  @Column({ nullable: true})
   @Exclude()
   refreshToken: string;
 
